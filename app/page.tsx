@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FiChevronDown, FiGithub, FiMail } from 'react-icons/fi'
@@ -9,6 +9,8 @@ import { useBoot } from './components/BootProvider'
 import ProjectsSection from './components/ProjectsSection'
 import AboutSection from './components/AboutSection'
 import ContactSection from './components/ContactSection'
+import StartMenu from './components/StartMenu'
+import { useSmoothScroll } from './components/SmoothScroll'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -50,6 +52,8 @@ export default function Home() {
   const scrollHintRef = useRef<HTMLDivElement>(null)
   const lineLeftRef = useRef<HTMLSpanElement>(null)
   const lineRightRef = useRef<HTMLSpanElement>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { scrollTo } = useSmoothScroll()
 
   // ═══ Hero Timeline ═══
   useEffect(() => {
@@ -233,8 +237,26 @@ export default function Home() {
     return () => ctx.revert()
   }, [booted])
 
+
+  const handleMenuSelect = (target: string, action: 'scroll' | 'external') => {
+    if (action === 'external') {
+      window.open(target, '_blank', 'noopener,noreferrer')
+      return
+    }
+    // scroll
+    setTimeout(() => {
+      scrollTo(target)
+    }, 50)
+  }
+
   return (
     <>
+      {menuOpen && (
+        <StartMenu
+          onClose={() => setMenuOpen(false)}
+          onSelect={handleMenuSelect}
+        />
+      )}
       <main ref={heroRef} id="hero" className="relative">
         {/* ═══ بلوک‌های پیکسلی شناور پس‌زمینه ═══ */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -308,8 +330,12 @@ export default function Home() {
           </p>
 
           <div className="flex items-center gap-3 flex-wrap justify-center px-4">
-            <button ref={btnRef} className="pixel-btn">
-              PRESS START
+            <button
+              ref={btnRef}
+              onClick={() => setMenuOpen(true)}
+              className="pixel-btn"
+            >
+              ▶ PRESS START
             </button>
 
           </div>
