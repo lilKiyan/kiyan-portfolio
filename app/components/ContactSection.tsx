@@ -47,6 +47,11 @@ const CONTACT_CHANNELS = [
 export default function ContactSection() {
     const sectionRef = useRef<HTMLElement>(null)
     const [copied, setCopied] = useState<string | null>(null)
+    const [year, setYear] = useState<number | null>(null)
+
+    useEffect(() => {
+        setYear(new Date().getFullYear())
+    }, [])
 
     useEffect(() => {
         const section = sectionRef.current
@@ -208,15 +213,15 @@ export default function ContactSection() {
                         </p>
                         <p className="text-gray-400 pl-3 md:pl-4">
                             <span className="text-gray-600">&gt;</span> status:{' '}
-                            <span className="text-[#22ff88] text-[9px] md:text-md">available for work</span>
+                            <span className="text-[#22ff88] text-[9px] md:text-[11px]">available for work</span>
                         </p>
                         <p className="text-gray-400 pl-3 md:pl-4">
                             <span className="text-gray-600">&gt;</span> response_time:{' '}
-                            <span className="text-[#22ff88] text-[9px] md:text-md">&lt; 24h</span>
+                            <span className="text-[#22ff88] text-[9px] md:text-[11px]">&lt; 24h</span>
                         </p>
                         <p className="text-gray-400 pl-3 md:pl-4">
                             <span className="text-gray-600">&gt;</span> open_for:{' '}
-                            <span className="text-[#22ff88] text-[9px] md:text-md">freelance · full-time</span>
+                            <span className="text-[#22ff88] text-[9px] md:text-[11px]">freelance · full-time</span>
                         </p>
                         <p className="text-[#22ff88] pt-2">
                             <span className="text-gray-600">~$</span>{' '}
@@ -319,7 +324,7 @@ export default function ContactSection() {
 
                     <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
                         <p className="font-pixel text-[8px] md:text-[9px] text-gray-600 text-center md:text-left">
-                            © {new Date().getFullYear()} KIYAN.NAGHIEE
+                            © {year ?? 2025} KIYAN.NAGHIEE
                             <span className="text-[#22ff88]/40 mx-2">·</span>
                             BUILT WITH NEXT.JS + GSAP
                         </p>
