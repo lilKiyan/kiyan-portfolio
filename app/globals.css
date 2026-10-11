@@ -1,26 +1,184 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+body {
+  background-color: #0a0a0f;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,
+body {
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ═══ کلاس‌های آماده ═══ */
+
+.font-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.pixel-btn {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  padding: 1rem 2rem;
+  background: #22ff88;
+  color: #0a0a0f;
+  box-shadow: 4px 4px 0 0 #0a0a0f, 4px 4px 0 1px #22ff88;
+  transition: all 0.15s ease;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-btn:hover {
+  box-shadow: 2px 2px 0 0 #0a0a0f, 2px 2px 0 1px #22ff88;
+  transform: translate(2px, 2px);
+}
+
+.pixel-btn:active {
+  box-shadow: 0 0 0 0 #0a0a0f, 0 0 0 1px #22ff88;
+  transform: translate(4px, 4px);
+}
+
+.pixel-card {
+  background: #12121a;
+  border: 2px solid #2a2a35;
+  transition: all 0.2s ease;
+}
+
+.pixel-card:hover {
+  border-color: #22ff88;
+}
+
+.safe-bottom {
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+.safe-pb {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ═══ Keyframes ═══ */
+
+@keyframes crtOn {
+  0% {
+    transform: scaleY(0.01);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scaleY(0.6);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes bounceHint {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pixelFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.skill-card {
+  opacity: 1 !important;
+}
+
+.soft-chip {
+  opacity: 100 !important;
+}
+
+.contact-card {
+  opacity: 100 !important;
 }
