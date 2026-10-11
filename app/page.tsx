@@ -141,7 +141,7 @@ export default function Home() {
       )
 
       const counters = [
-        { selector: '[data-count="projects"]', final: 6, suffix: '+' },
+        { selector: '[data-count="projects"]', final: 10, suffix: '+' },
         { selector: '[data-count="stack"]', final: 8, suffix: '+' },
       ]
 

@@ -12,7 +12,7 @@ const PROJECTS = [
         id: '01',
         title: 'PINVERSE',
         desc: 'Full-stack Pinterest-inspired (Persian Pinterest) platform built for Persian users — featuring image discovery, board collections, and social interactions with a localized RTL-first experience.',
-        tags: ['NEXT.JS', 'PRISMA', 'FULL-STACK'],
+        tags: ['NEXT.JS', 'PRISMA', 'FULL-STACK', 'REST API'],
         color: '#ff2d55',
         url: 'https://pinterest-clone-lac-five.vercel.app',
     },
@@ -34,6 +34,14 @@ const PROJECTS = [
     },
     {
         id: '04',
+        title: 'MIRAVE',
+        desc: 'A creative & unique portfolio website for mirave-team with beautiful & modern UI/UX.',
+        tags: ['TAILWIND', 'UI/UX'],
+        color: '#BA2993',
+        url: 'https://mirave.ir/',
+    },
+    {
+        id: '05',
         title: 'G-PRO (IRANIAN GOOGLE)',
         desc: 'An Iranian search engine UI — fast, minimal, and Google-inspired, built from scratch with vanilla HTML, CSS, and JavaScript.',
         tags: ['HTML', 'CSS', 'JAVASCRIPT', 'BOOTSTRAP'],
@@ -41,7 +49,7 @@ const PROJECTS = [
         url: 'https://google-pro.ir',
     },
     {
-        id: '05',
+        id: '06',
         title: 'SUPER DASHBOARD',
         desc: 'All-in-one admin panel — real-time monitoring, task management, and role-based access control.',
         tags: ['NEXT.JS', 'ADMIN', 'MONITORING'],
@@ -49,13 +57,30 @@ const PROJECTS = [
         url: '#',
     },
     {
-        id: '06',
+        id: '07',
         title: 'PASAAZH',
         desc: 'A store builder with 30+ industry-ready templates — launch a full online shop in minutes, no code required.',
         tags: ['BOOTSTRAP', 'E-COMMERCE', 'BUILDER'],
         color: '#ffd60a',
         url: 'https://pasaazh.com/',
     },
+    {
+        id: '08',
+        title: 'AINCI',
+        desc: 'An AI & tech news platform — clean editorial layout, category filtering, and a modern reading experience built for a Persian audience.',
+        tags: ['BOOTSTRAP', 'UI/UX', 'RESPONSIVE'],
+        color: '#FA8CE5',
+        url: 'https://ainci.ir/',
+    },
+    {
+        id: '09',
+        title: 'IRANIAN GMAIL',
+        desc: 'An Iranian Email platform with fully exclusive design.',
+        tags: ['BOOTSTRAP', 'UI/UX', 'RESPONSIVE'],
+        color: '#D4C2FF',
+        url: 'https://github.com/lilKiyan/Iranian-Gmail',
+    },
+
 ]
 
 export default function ProjectsSection() {
