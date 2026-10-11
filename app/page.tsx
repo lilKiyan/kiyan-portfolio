@@ -335,7 +335,7 @@ export default function Home() {
               onClick={() => setMenuOpen(true)}
               className="pixel-btn"
             >
-              ▶ PRESS START
+             PRESS START
             </button>
 
           </div>
