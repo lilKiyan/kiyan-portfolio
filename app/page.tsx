@@ -11,6 +11,7 @@ import AboutSection from './components/AboutSection'
 import ContactSection from './components/ContactSection'
 import StartMenu from './components/StartMenu'
 import { useSmoothScroll } from './components/SmoothScroll'
+import { useSound } from './components/SoundProvider'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -42,6 +43,7 @@ function TechMarquee() {
 
 export default function Home() {
   const { booted } = useBoot()
+  const { play } = useSound()
 
   const heroRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -62,11 +64,9 @@ export default function Home() {
     const title = titleRef.current
     if (!title) return
 
-    // ⭐ شدت انیمیشن بر اساس اندازه‌ی صفحه
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const charStagger = isMobile ? 0.045 : 0.09
     const charY = isMobile ? 30 : 60
-    const titleY = isMobile ? 25 : 40
 
     const text = title.textContent || ''
     title.innerHTML = text
@@ -145,7 +145,7 @@ export default function Home() {
       )
 
       const counters = [
-        { selector: '[data-count="projects"]', final: 10, suffix: '+' },
+        { selector: '[data-count="projects"]', final: 9, suffix: '+' },
         { selector: '[data-count="stack"]', final: 8, suffix: '+' },
       ]
 
@@ -168,7 +168,6 @@ export default function Home() {
       })
     })
 
-    // آمار روی موبایل — فقط fade in بدون شمارنده
     mm.add('(max-width: 767px)', () => {
       gsap.fromTo(
         statsRef.current,
@@ -190,7 +189,6 @@ export default function Home() {
       '-=0.1'
     )
 
-    // Glitch — کمی سریع‌تر روی موبایل
     const glitchInterval = setInterval(
       () => {
         const chars = title.querySelectorAll('.char')
@@ -237,13 +235,11 @@ export default function Home() {
     return () => ctx.revert()
   }, [booted])
 
-
   const handleMenuSelect = (target: string, action: 'scroll' | 'external') => {
     if (action === 'external') {
       window.open(target, '_blank', 'noopener,noreferrer')
       return
     }
-    // scroll
     setTimeout(() => {
       scrollTo(target)
     }, 50)
@@ -257,8 +253,9 @@ export default function Home() {
           onSelect={handleMenuSelect}
         />
       )}
+
       <main ref={heroRef} id="hero" className="relative">
-        {/* ═══ بلوک‌های پیکسلی شناور پس‌زمینه ═══ */}
+        {/* بلوک‌های پیکسلی شناور پس‌زمینه */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {[
             { top: '15%', left: '8%', size: 'w-4 h-4 md:w-6 md:h-6', delay: '0s' },
@@ -293,7 +290,7 @@ export default function Home() {
           className="relative min-h-[100svh] flex flex-col items-center justify-center
             gap-6 sm:gap-8 md:gap-10 px-4 py-16 md:py-0"
         >
-          {/* خط‌های افقی + برچسب */}
+          {/* خط‌های افقی */}
           <div className="flex items-center gap-3 md:gap-4 w-full max-w-4xl px-2">
             <span
               ref={lineLeftRef}
@@ -308,7 +305,7 @@ export default function Home() {
             />
           </div>
 
-          {/* ⭐ تیتر ریسپانسیو برای KIYAN NAGHIEE */}
+          {/* تیتر */}
           <h1
             ref={titleRef}
             className="font-pixel
@@ -332,10 +329,14 @@ export default function Home() {
           <div className="flex items-center gap-3 flex-wrap justify-center px-4">
             <button
               ref={btnRef}
-              onClick={() => setMenuOpen(true)}
+              onClick={() => {
+                play('start')
+                setMenuOpen(true)
+              }}
+              onMouseEnter={() => play('hover')}
               className="pixel-btn"
             >
-             PRESS START
+              PRESS START
             </button>
 
           </div>
@@ -344,18 +345,27 @@ export default function Home() {
             ref={statsRef}
             className="flex items-center gap-3 md:gap-6 px-4"
           >
-            <div className="pixel-card px-3 py-2 md:px-5 md:py-3 text-center">
+            <div
+              onMouseEnter={() => play('hover')}
+              className="pixel-card px-3 py-2 md:px-5 md:py-3 text-center
+                hover:border-[#22ff88]/60 transition-colors"
+            >
               <p
                 className="font-pixel text-xs md:text-sm text-[#22ff88]"
                 data-count="projects"
               >
-                10+
+                9+
               </p>
               <p className="font-body text-[8px] md:text-[10px] text-gray-500 mt-1 md:mt-1.5">
                 PROJECTS
               </p>
             </div>
-            <div className="pixel-card px-3 py-2 md:px-5 md:py-3 text-center">
+
+            <div
+              onMouseEnter={() => play('hover')}
+              className="pixel-card px-3 py-2 md:px-5 md:py-3 text-center
+                hover:border-[#22ff88]/60 transition-colors"
+            >
               <p
                 className="font-pixel text-xs md:text-sm text-[#22ff88]"
                 data-count="stack"
@@ -366,7 +376,12 @@ export default function Home() {
                 TECH STACK
               </p>
             </div>
-            <div className="pixel-card px-3 py-2 md:px-5 md:py-3 text-center">
+
+            <div
+              onMouseEnter={() => play('hover')}
+              className="pixel-card px-3 py-2 md:px-5 md:py-3 text-center
+                hover:border-[#22ff88]/60 transition-colors"
+            >
               <p className="font-pixel text-xs md:text-sm text-[#22ff88]">∞</p>
               <p className="font-body text-[8px] md:text-[10px] text-gray-500 mt-1 md:mt-1.5">
                 COFFEE

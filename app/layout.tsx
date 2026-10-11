@@ -3,6 +3,8 @@ import { Press_Start_2P, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import SmoothScroll from './components/SmoothScroll'
 import BootProvider from './components/BootProvider'
+import SoundProvider from './components/SoundProvider'
+import SoundToggle from './components/SoundToggle'
 import PixelNav from './components/PixelNav'
 
 const pixelFont = Press_Start_2P({
@@ -19,8 +21,8 @@ const bodyFont = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Kiyan — Pixel Portfolio',
-  description: 'Next.js Developer — Level Up With Every Project',
+  title: 'Kiyan Naghiee — Front-End Developer',
+  description: 'Pixel-perfect by obsession. Front-End Developer crafting experiences with Next.js, React & GSAP.',
 }
 
 export default function RootLayout({
@@ -31,14 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${pixelFont.variable} ${bodyFont.variable} bg-[#0a0a0f] text-white antialiased selection:bg-[#2f8] selection:text-emerald-950`}
+        className={`${pixelFont.variable} ${bodyFont.variable} bg-[#0a0a0f] text-white antialiased`}
       >
-        <BootProvider>
-          <SmoothScroll>
-            <PixelNav />
-            {children}
-          </SmoothScroll>
-        </BootProvider>
+        <SoundProvider>
+          <BootProvider>
+            <SmoothScroll>
+              <SoundToggle />
+              <PixelNav />
+              {children}
+            </SmoothScroll>
+          </BootProvider>
+        </SoundProvider>
       </body>
     </html>
   )

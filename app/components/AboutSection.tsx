@@ -25,6 +25,7 @@ import {
     SiDotnet,
     SiMysql,
 } from 'react-icons/si'
+import { useSound } from './SoundProvider'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -85,8 +86,11 @@ const EDUCATION = {
     period: '2023 — 2027 (EXPECTED)',
 }
 
+
+
 export default function AboutSection() {
     const sectionRef = useRef<HTMLElement>(null)
+    const { play } = useSound()
 
     useEffect(() => {
         const section = sectionRef.current
@@ -292,6 +296,7 @@ export default function AboutSection() {
                             return (
                                 <div
                                     key={skill.name}
+                                    onMouseEnter={() => play('hover')}
                                     className="skill-card pixel-card px-3 py-2.5 md:px-4 md:py-3
                     flex items-center gap-2 md:gap-3 group cursor-default
                     hover:-translate-y-1 hover:border-[#ffd60a]/60
