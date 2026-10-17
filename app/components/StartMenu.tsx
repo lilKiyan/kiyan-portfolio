@@ -8,6 +8,7 @@ import {
     FiMail,
     FiExternalLink,
     FiChevronRight,
+    FiStar
 } from 'react-icons/fi'
 
 // ══════ داده‌ها ══════
@@ -53,6 +54,14 @@ const MENU_ITEMS: MenuItem[] = [
         icon: FiExternalLink,
         action: 'external',
         target: 'https://github.com/lilkiyan',
+    },
+    {
+        id: 'credits',
+        label: 'CREDITS',
+        hint: '???',
+        icon: FiStar,  
+        action: 'external',
+        target: '/credits',  
     },
 ]
 

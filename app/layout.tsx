@@ -6,6 +6,7 @@ import BootProvider from './components/BootProvider'
 import SoundProvider from './components/SoundProvider'
 import SoundToggle from './components/SoundToggle'
 import PixelNav from './components/PixelNav'
+import CustomCursor from './components/CustomCursor'
 
 const pixelFont = Press_Start_2P({
   weight: '400',
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
   description: 'Pixel-perfect by obsession. Front-End Developer crafting experiences with Next.js, React & GSAP.',
 }
 
+
 export default function RootLayout({
   children,
 }: {
@@ -38,6 +40,7 @@ export default function RootLayout({
         <SoundProvider>
           <BootProvider>
             <SmoothScroll>
+              <CustomCursor />
               <SoundToggle />
               <PixelNav />
               {children}

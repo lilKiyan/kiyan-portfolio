@@ -145,8 +145,8 @@ export default function Home() {
       )
 
       const counters = [
-        { selector: '[data-count="projects"]', final: 9, suffix: '+' },
-        { selector: '[data-count="stack"]', final: 8, suffix: '+' },
+        { selector: '[data-count="projects"]', final: 15, suffix: '+' },
+        { selector: '[data-count="stack"]', final: 12, suffix: '+' },
       ]
 
       counters.forEach((c) => {
@@ -354,7 +354,7 @@ export default function Home() {
                 className="font-pixel text-xs md:text-sm text-[#22ff88]"
                 data-count="projects"
               >
-                9+
+                0
               </p>
               <p className="font-body text-[8px] md:text-[10px] text-gray-500 mt-1 md:mt-1.5">
                 PROJECTS
@@ -370,7 +370,7 @@ export default function Home() {
                 className="font-pixel text-xs md:text-sm text-[#22ff88]"
                 data-count="stack"
               >
-                8+
+                0
               </p>
               <p className="font-body text-[8px] md:text-[10px] text-gray-500 mt-1 md:mt-1.5">
                 TECH STACK

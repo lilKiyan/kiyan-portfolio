@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FiMail, FiGithub, FiCopy, FiCheck } from 'react-icons/fi'
+import Link from 'next/link'
 import { FaTelegramPlane } from 'react-icons/fa'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -337,18 +338,27 @@ export default function ContactSection() {
                         </p>
                     </div>
 
-                    <div className="mt-6 md:mt-8 text-center">
+                    <div className="mt-6 md:mt-8 flex items-center justify-center gap-3">
                         <a
                             href="#hero"
                             className="inline-flex items-center gap-2
-                font-pixel text-[9px] text-gray-600
-                hover:text-[#22ff88]
-                px-4 py-2.5 border border-[#2a2a35] hover:border-[#22ff88]
-                active:scale-95
-                transition-all duration-200"
+      font-pixel text-[9px] text-gray-600
+      hover:text-[#22ff88]
+      px-4 py-2.5 border border-[#2a2a35] hover:border-[#22ff88]
+      active:scale-95
+      transition-all duration-200"
                         >
                             <span>↑</span> BACK TO TOP
                         </a>
+
+                        <Link
+                            href="/credits"
+                            className="font-pixel text-[8px] text-gray-800 hover:text-[#ffd60a]
+      transition-colors px-2 py-1"
+                            aria-label="View credits"
+                        >
+                            ★
+                        </Link>
                     </div>
                 </div>
             </div>

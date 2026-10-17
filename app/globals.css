@@ -182,3 +182,26 @@ a {
 .contact-card {
   opacity: 100 !important;
 }
+
+/* ═══ Custom Cursor ═══ */
+@media (pointer: fine) {
+
+  html,
+  body,
+  a,
+  button,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+
+  html,
+  body,
+  a,
+  button,
+  [role="button"] {
+    cursor: auto !important;
+  }
+}

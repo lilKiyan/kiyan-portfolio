@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { useSound } from './SoundProvider'
+import TextScramble from './TextScramble'
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -231,7 +232,12 @@ export default function ProjectsSection() {
             text-white leading-tight
             [text-shadow:0_0_16px_rgba(34,255,136,0.4)] md:[text-shadow:0_0_20px_rgba(34,255,136,0.4)]"
         >
-          PROJECT<span className="text-[#22ff88]">S</span>
+          <TextScramble
+            text="PROJECTS"
+            scrambleOnMount={true}
+            delay={0.2} // کمی بعد از لود سکشن
+            scrambleOnHover={true}
+          />
         </h2>
       </div>
 

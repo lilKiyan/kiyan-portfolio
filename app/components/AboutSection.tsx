@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import TextScramble from './TextScramble'
 import {
     FiMapPin,
     FiCode,
@@ -203,7 +204,20 @@ export default function AboutSection() {
               text-white leading-tight
               [text-shadow:0_0_16px_rgba(255,214,10,0.3)] md:[text-shadow:0_0_20px_rgba(255,214,10,0.3)]"
                     >
-                        ABOUT<span className="text-[#ffd60a]">_ME</span>
+                        <TextScramble
+                            text="ABOUT"
+                            scrambleOnMount={true}
+                            delay={0.2}
+                            scrambleOnHover={true}
+                        />
+                        <span className="text-[#ffd60a]">
+                            <TextScramble
+                                text="_ME"
+                                scrambleOnMount={true}
+                                delay={0.2}
+                                scrambleOnHover={true}
+                            />
+                        </span>
                     </h2>
                 </div>
 
